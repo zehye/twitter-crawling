@@ -53,8 +53,6 @@ STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 
-# CustomUser Model
-AUTH_USER_MODEL = 'members.User'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -68,19 +66,10 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'members',
-
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-
-    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -143,11 +132,3 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth.backends.AuthenticationBackend',
-)
-
-SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
