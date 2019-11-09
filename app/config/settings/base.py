@@ -15,8 +15,8 @@ import os
 from django.core.exceptions import ImproperlyConfigured
 from dotenv import load_dotenv, find_dotenv
 
-PROJECT_ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-BASE_DIR = os.path.dirname(PROJECT_ROOT_DIR)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+ROOT_DIR = os.path.dirname(BASE_DIR)
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 # env 파일 로드
@@ -43,10 +43,10 @@ SECRET_KEY = get_env_variable('SECRET_KEY')
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(PROJECT_ROOT_DIR, '.static')
+STATIC_ROOT = os.path.join(ROOT_DIR, '.static')
 # Media (User-uploaded files)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(PROJECT_ROOT_DIR, '.media')
+MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
 
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
@@ -62,6 +62,8 @@ ALLOWED_HOSTS = [
     'localhost',
 ]
 
+AUTH_USER_MODEL = 'members.User'
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -70,6 +72,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'twitter',
+    'members',
 ]
 
 MIDDLEWARE = [
@@ -87,7 +92,9 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            TEMPLATES_DIR,
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
