@@ -57,6 +57,7 @@ ALLOWED_HOSTS = [
     '.ap-northeast-2.compute.amazonaws.com',
     'localhost',
     '127.0.0.1',
+    'qkdxks.com',
 ]
 
 AUTH_USER_MODEL = 'members.User'
@@ -73,12 +74,16 @@ INSTALLED_APPS = [
 
     'twitter',
     'members',
+    'common',
+    'mypage',
 
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
 
     'allauth.socialaccount.providers.google',
+
+    'django-extensions',
 ]
 
 MIDDLEWARE = [
